@@ -8,12 +8,23 @@ const port = 3000;
 const app = express();
 
 /**
- * Display list of the last 100 bids created
+ * Reads all Bids documents
+ */
+ app.get("/",async (req: Request, res: Response) => {
+  try {
+    const readBids = await bids.readAll();
+    return res.send(readBids);
+  } catch (err) {
+    return res.status(400).send(err);
+  }
+});
+
+/**
+ * Insert CSV rows into Firestore
  */
 app.post("/",async (req: Request, res: Response) => {
   try {
     const createBids = await bids.create(req.body);
-
     return res.send(createBids);
   } catch (err) {
     return res.status(400).send(err);
