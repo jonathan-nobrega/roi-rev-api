@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import express, { Request, Response } from "express";
+import express, {Request, Response} from "express";
 import * as bids from "../services/bids.service";
 // const multer = require('multer');
 // const upload = multer();
@@ -10,7 +10,7 @@ const app = express();
 /**
  * Reads all Bids documents
  */
- app.get("/",async (req: Request, res: Response) => {
+app.get("/", async (req: Request, res: Response) => {
   try {
     const readBids = await bids.readAll();
     return res.send(readBids);
@@ -22,7 +22,7 @@ const app = express();
 /**
  * Insert CSV rows into Firestore
  */
-app.post("/",async (req: Request, res: Response) => {
+app.post("/", async (req: Request, res: Response) => {
   try {
     const createBids = await bids.create(req.body);
     return res.send(createBids);

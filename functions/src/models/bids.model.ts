@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { initializeApp } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
+import {initializeApp} from "firebase-admin/app";
+import {getFirestore} from "firebase-admin/firestore";
 
 initializeApp();
 const db = getFirestore();
-let docRef = db.collection("bids");
+const docRef = db.collection("bids");
 
 /**
  * Read all records from Firestore DB
  * @return {any} Firestore response
  */
- export async function readBids() {
-  let list: any[] = [];
+export async function readBids() {
+  const list: any[] = [];
 
-  (await docRef.get()).forEach(doc => list.push(doc.data()))
+  (await docRef.get()).forEach((doc) => list.push(doc.data()));
 
-  return list
+  return list;
 }
 
 // /**

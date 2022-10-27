@@ -8,5 +8,6 @@ export interface Bid {
     task_name: string,
     task_bid_amount: number,
     bid_date: string,
+    bid_id?: string,
 }
 
